@@ -1,0 +1,42 @@
+﻿
+@model List<Order>;
+
+<br />
+
+<h2> List Of Order </h2>
+<br />
+
+<a class="btn btn-primary btn-sm" asp-controller="Order" asp-action="Create"> Add Order </a>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>OrderId</th>
+            <th>Customer Name</th>
+            <th>Sweater Type</th>
+            <th>Quantity</th>
+            <th>Order Date</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var iteam in Model)
+        {
+            <tr>
+                <td>@iteam.orderId</td>
+                <td>@iteam.customerName</td>
+                <td>@iteam.sweaterType</td>
+                <td>@iteam.quantity</td>
+                <td>@iteam.orderDate</td>
+                <td>@iteam.status</td>
+                <td> 
+                    <a class="btn btn-primary btn-sm" asp-action="Edit" asp-controller="Order" asp-route-id="@iteam.id"> Edit  </a>
+                    <a class="btn btn-danger btn-sm" asp-action="Delete" asp-controller="Order" asp-route-id="@iteam.id"> Delete </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
